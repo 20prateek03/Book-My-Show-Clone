@@ -1,0 +1,113 @@
+package com.movie.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="booking")
+public class Booking {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	private String CustName;
+	private String email;
+	private String address;
+	private String city;
+	private String state;
+	private Integer pincode;
+	
+	private String cardaccepted;
+	private String nameoncard;
+	private String creditcardno;
+	private String expmonth;
+	private Integer expyear;
+	private Integer cvv;
+	
+	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getCustName() {
+		return CustName;
+	}
+	public void setCustName(String custName) {
+		CustName = custName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public Integer getPincode() {
+		return pincode;
+	}
+	public void setPincode(Integer pincode) {
+		this.pincode = pincode;
+	}
+	public String getCardaccepted() {
+		return cardaccepted;
+	}
+	public void setCardaccepted(String cardaccepted) {
+		this.cardaccepted = cardaccepted;
+	}
+	public String getNameoncard() {
+		return nameoncard;
+	}
+	public void setNameoncard(String nameoncard) {
+		this.nameoncard = nameoncard;
+	}
+	public String getCreditcardno() {
+		return creditcardno;
+	}
+	public void setCreditcardno(String creditcardno) {
+		this.creditcardno = creditcardno;
+	}
+	public String getExpmonth() {
+		return expmonth;
+	}
+	public void setExpmonth(String expmonth) {
+		this.expmonth = expmonth;
+	}
+	public Integer getExpyear() {
+		return expyear;
+	}
+	public void setExpyear(Integer expyear) {
+		this.expyear = expyear;
+	}
+	public Integer getCvv() {
+		return cvv;
+	}
+	public void setCvv(Integer cvv) {
+		this.cvv = cvv;
+	}
+	
+	
+	
+}

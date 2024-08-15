@@ -1,0 +1,8 @@
+package com.movie.model;
+
+public class Snippet {
+	
+	@Column(name="name")
+	private String name;
+}
+

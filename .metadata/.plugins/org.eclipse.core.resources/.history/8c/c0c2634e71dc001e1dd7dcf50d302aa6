@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <jsp:include page="index_header1.jsp"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>BookMyShow </title>
+</head>
+<body>
+<a class="navbar-brand" href="#">Book Now<img src="images/fighter.jpg" width="400" height="500" border="left">
+<a class="navbar-brand" href="#">Book Now<img src="images/gravity.jpg" width="400" height="500" border="left">
+<a class="navbar-brand" href="#">Book Now<img src="images/Shiddat_poster.jpg" width="400" height="500" border="left">
+</body>
+</html>

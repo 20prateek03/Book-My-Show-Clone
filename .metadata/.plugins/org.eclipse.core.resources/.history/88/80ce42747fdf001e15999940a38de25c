@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@page import="java.sql.*" %>
+    <%@page import="org.misc.ConnectionProvider" %>
+<%
+String prodId=request.getParameter("prodid");
+String prodName=request.getParameter("prodname");
+String quantity=request.getParameter("qty");
+String price=request.getParameter("price");
+int qty=Integer.parseInt(quantity);
+double price2=Double.parseDouble(price);
+Connection con;
+PreparedStatement pstm;
+try{
+	con=ConnectionProvider.createC();
+	
+	
+	pstm=con.prepareStatement("update product set prod_name=?,quantity=?,price=? where prod_id=?");
+	pstm.setString(4, prodId);
+	pstm.setString(1,prodName);
+	pstm.setInt(2,qty);
+	pstm.setDouble(3,price2);
+	pstm.executeUpdate();
+	con.close();
+	response.sendRedirect("view_product.jsp");
+}catch (Exception e){}
+%>

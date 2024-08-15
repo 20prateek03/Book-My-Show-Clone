@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Booking</title>
+    <link rel="stylesheet" >
+    <style>
+        .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.seat-map {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seat.selected {
+    background-color: #007bff;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your Seats</h2>
+        <div class="seat-map">
+            <!-- Seat layout goes here -->
+        </div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+
+    <script >const seatsContainer = document.querySelector('.seat-map');
+        const checkoutButton = document.getElementById('checkout-btn');
+        let selectedSeats = [];
+        
+        // Dummy data for seat availability
+        const seatAvailability = [
+            { id: 1, row: 'A', number: 1, available: true },
+            { id: 2, row: 'A', number: 2, available: false },
+            // Add more seat data here...
+        ];
+        
+        // Create seat elements
+        seatAvailability.forEach(seat => {
+            const seatElement = document.createElement('div');
+            seatElement.classList.add('seat');
+            if (!seat.available) {
+                seatElement.classList.add('unavailable');
+            }
+            seatElement.textContent = `${seat.row}${seat.number}`;
+            seatElement.addEventListener('click', () => {
+                if (seat.available) {
+                    seatElement.classList.toggle('selected');
+                    const index = selectedSeats.indexOf(seat.id);
+                    if (index === -1) {
+                        selectedSeats.push(seat.id);
+                    } else {
+                        selectedSeats.splice(index, 1);
+                    }
+                }
+            });
+            seatsContainer.appendChild(seatElement);
+        });
+        
+        // Checkout button click event
+        checkoutButton.addEventListener('click', () => {
+            if (selectedSeats.length > 0) {
+                alert(`Selected seats: ${selectedSeats.join(', ')}`);
+                // Send selectedSeats array to backend for further processing
+            } else {
+                alert('Please select at least one seat.');
+            }
+        });</script>
+</body>
+</html>

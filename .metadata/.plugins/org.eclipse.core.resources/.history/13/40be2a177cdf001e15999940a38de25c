@@ -1,0 +1,117 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@page import="java.sql.*" %>
+    <%@page import ="org.springframework.ui.ModelMap" %>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+input[type=reset] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=reset]:hover {
+  background-color: #45a049;
+}
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<%
+//String prodId=request.getParameter("prodId");
+ModelMap model;
+String prodId=(String)model.get("prodId");
+Connection con;
+PreparedStatement pstm;
+ResultSet rs;
+String prodName=null;
+int qty=0;
+double price=0;
+try{
+	con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommercefitaiml","root","anindya@1234");
+	pstm=con.prepareStatement("select *from product where prod_id=?");
+	pstm.setString(1,prodId);
+	rs=pstm.executeQuery();
+	while(rs.next())
+	{
+		prodName=rs.getString(5);
+		qty=rs.getInt(6);
+		price=rs.getDouble(5);
+	}
+%>
+<h2>Update Product </h2>
+
+
+<div>
+  <form action="update_data.jsp"  method="post" "multipart/form-data" >
+    <label for="fname">Product Id</label>
+    <input type="text"  name="prodid" value=<%=prodId %> >
+
+    <label for="lname">ProductName</label>
+    <input type="text"  name="prodname" value=<%= prodName%>>
+
+   <label for="lname">Quantity</label>
+    <input type="text"  name="qty" value=<%=qty %>>
+    
+    <label for="lname">Price</label>
+    <input type="text"  name="price" value=<%=price %>>
+    Select File:<input type="file" name="fname"/>
+    <input type="submit" value="Submit">
+    
+  </form>
+</div>
+
+//<%
+//String prodId=request.getParameter("prodId");
+//Connection con;
+//PreparedStatement pstm;
+//try{
+	//con=ConnectionProvider.createC();
+	
+	
+	//pstm=con.prepareStatement("update admin set email=name=phone_no=city=password where email=?");
+	//pstm.setString(1, email);
+	//pstm.executeUpdate();
+	//con.close();
+	//response.sendRedirect("admindashboard.jsp");
+}catch (Exception e){}
+%>
+</body>
+</html>

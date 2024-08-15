@@ -1,0 +1,28 @@
+package com.movie.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+public class LogoutAdmin {
+	
+	
+
+	    @GetMapping("/logout")
+	    public String logout(HttpServletRequest request) {
+	        // Get the HttpSession object
+	        HttpSession session = request.getSession(false);
+	        
+	        if (session != null) {
+	            // Invalidate the session
+	            session.invalidate();
+	        }
+	        
+	        // Redirect to the login page
+	        return "redirect:/admlogin" ;
+	    }
+	}
+

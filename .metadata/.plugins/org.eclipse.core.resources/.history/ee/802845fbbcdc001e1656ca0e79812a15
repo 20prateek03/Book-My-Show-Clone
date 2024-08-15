@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Arrangement</title>
+    <link rel="stylesheet" href="seating.css">
+    <style>
+    .venue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.unavailable {
+    background-color: #999; /* Change color for unavailable seats */
+}</style>
+</head>
+<body>
+    <div class="venue">
+        <%-- Example of seating arrangement --%>
+        <div class="row">
+            <div class="seat">1</div>
+            <div class="seat">2</div>
+            <div class="seat unavailable">3</div> <!-- Unavailable seat -->
+            <div class="seat">4</div>
+            <!-- Add more seat divs as needed -->
+        </div>
+        <div class="row">
+            <div class="seat">5</div>
+            <div class="seat">6</div>
+            <div class="seat">7</div>
+            <div class="seat">8</div>
+            <!-- Add more seat divs as needed -->
+        </div>
+        <!-- Add more row divs as needed -->
+    </div>
+</body>
+</html>
